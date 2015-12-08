@@ -16,6 +16,18 @@
 8 T   C   F   Q   K   F   C   T   NOIRS JOUEUR 1
 
 
+Rook = Tour
+Knight = cavalier 
+bishop = fou
+pawn = pion
+
+
+	   ---	  ---	
+	   -K-     P
+	   ---	  ---
+			  
+
+
 
                   - . -
 			 	-	.   -
