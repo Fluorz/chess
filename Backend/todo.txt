@@ -2,6 +2,7 @@ Backend (full python)
 
 VARIABLES:
 échéquier #Tableau avec toutes les pièces et leurs positions
+joueur = 0 ou 1
 
 SERVEUR : 
 
@@ -31,9 +32,9 @@ GameGenerator # Génère un nouvel échéquier et le mets dans la var échéquie
 CheckMat #Fonction qui vérifie si echec et mat
 
 CheckMoveValidity #Fonction qui vérifie si le move est valide 
-	#CheckMat(move)
+	#CheckMat(echequier)
 
-UpdateGameState(move) #Fonction qui update la variable echéquier
+UpdateGameState(move) #Fonction qui renvoie une nouvelle variable echéquier
 
 
 
@@ -43,3 +44,30 @@ Echequier [['joueur', 'piece', 5, 6], ['joueur 2', 'piece 2', 6, 4]]
 Move ['joueur', 'piece', 'x', 'y', 'newX', 'newY']
 
 Erreur ['type', 'joueur']
+
+
+
+
+
+
+
+
+
+
+
+
+if(move[1] == 'pion'):
+	if Pion.canMove(joueur, x, y, newX, newY):
+		for i in range(0, len(ech)):
+			if ech[i][2] == newX and ech[i][3] == newY:
+				if ech[i][0] == joueurQuiJoue:
+					PAS LE DROIT DE MANGER TES PIONS
+				else:
+					OK TU BOUFFE
+		
+if(move[1] == 'fou')::
+	if Fou.canMove(x, y, newX, newY):
+		
+
+
+

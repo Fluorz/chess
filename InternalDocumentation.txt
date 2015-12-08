@@ -8,6 +8,7 @@ Envoie nouvelle partie    ->
 
 # BOUCLE
 
+Vérifie pas échec et mat
 				Joueur fait son move
 			  	Envoie son move au serveur (Ajax)
 			  <-
@@ -28,5 +29,3 @@ Si invalide:
 				->
 				 	Traduit le message d'erreur (js)
 					Redemande à l'utilisateur de jouer
-
-
