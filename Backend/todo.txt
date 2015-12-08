@@ -1,0 +1,45 @@
+Backend (full python)
+
+VARIABLES:
+échéquier #Tableau avec toutes les pièces et leurs positions
+
+SERVEUR : 
+
+InitServer #Démarre le server et tout les services
+
+RequestHandler(url) # S'occupe de toutes les requêtes et les parse 
+	#Check quelle est l'url à laquelle la requête est envoyée
+	#Récupère les paramêtres POST de la requête 
+	#dispatche à la bonne fonction
+	
+	NewGameRequest() # Fonction de création de game. Renvoie l'échéquier de base et initialise les variables 
+		#GameGenerator()
+	
+	PlayerMoveRequest(move) #Fonction qui s'occupe des moves
+		#CheckMoveValidity(move)
+			#UpdateGameState(move)
+
+	SendGameState() #Fonction qui envoie l'état du jeux depuis la var échéquier
+	
+	SendError(Erreur) #Fonction qui envoie une erreur si move invalide
+
+	
+	
+	
+GameGenerator # Génère un nouvel échéquier et le mets dans la var échéquier
+
+CheckMat #Fonction qui vérifie si echec et mat
+
+CheckMoveValidity #Fonction qui vérifie si le move est valide 
+	#CheckMat(move)
+
+UpdateGameState(move) #Fonction qui update la variable echéquier
+
+
+
+
+Echequier [['joueur', 'piece', 5, 6], ['joueur 2', 'piece 2', 6, 4]]
+
+Move ['joueur', 'piece', 'x', 'y', 'newX', 'newY']
+
+Erreur ['type', 'joueur']

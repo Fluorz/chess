@@ -1,0 +1,32 @@
+Backend 			Frontend 
+
+# INIT
+				Demande nouvelle partie
+Génère nouvelle partie	  <-	
+Envoie nouvelle partie    ->
+				Affiche echéquier
+
+# BOUCLE
+
+				Joueur fait son move
+			  	Envoie son move au serveur (Ajax)
+			  <-
+Serveur vérifie si valide
+Si valide:	
+	Serveur update l'échéquier
+					Client demande update (ajax)
+				<-		
+	Serveur envoie update     
+			  	->	
+					Affichage échéquier
+Si invalide:
+	Serveur update rien
+				-> 
+					Client demande update (ajax)
+				<-
+	Serveur envoie message d'erreur
+				->
+				 	Traduit le message d'erreur (js)
+					Redemande à l'utilisateur de jouer
+
+

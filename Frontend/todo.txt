@@ -1,0 +1,12 @@
+FRONTEND (full js w/ ajax)
+
+Client :
+
+AskForNewGame() #Demande nouvelle partie au server
+
+UpdateGameDisplay(échéquier) #Mets à jour l'échéquier
+
+SendMove() #Envoie le move au server
+
+ParseErrorMessage(message) #Traduit le message d'erreur
+
