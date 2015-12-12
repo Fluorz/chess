@@ -1,5 +1,7 @@
 from random import randint
 from enum import Enum
+from flask import Flask
+from flask import request
 
 
 class Game:
@@ -62,45 +64,72 @@ class RequestKind(Enum):
 	
 		
 class Request:
-	def __init__(self, rqObject):
-		self.requestKind = self.getRequestKind(rqObject)
-		self.params = self.parseParams(rqObject)
-		
-		
-	def getRequestKind(self, rq):
-		return 1
-		
-	def parseParams(self, obj):
-		if self.requestKind != 3:
-			return {'uniqueId': 1000, 'uniqueUrl': 'dede'}
+	def __init__(self, uniqueurl = -1, uniqueid = -1, requestKind = -1):
+		print('creating new request')
+		if (requestKind != -1):
+			print('ok')
+			if uniqueid != -1:
+				self.uniqueId = uniqueid
+			if uniqueurl != -1:
+				self.uniqueUrl = uniqueurl
+			
+			self.requestKind = requestKind
+			self.params = self.parseParams()
+			
 		else:
-			return {'uniqueId': 1000, 'uniqueUrl': 'dede', 'move': [0, 1, 2, 3, 5]}
+			print('nok')
+			self.requestKind = False
+		
+	def parseParams(self):
+		if self.requestKind == -1:
+			return False
+		if self.requestKind == 0:
+			print('0')
+			return False
+		if self.requestKind == 1:
+			print('1')	
+			return {'uniqueurl': self.uniqueUrl}
+		if self.requestKind == 2:
+			print('2')
+			return {'uniqueurl': self.uniqueUrl}
+		if self.requestKind == 3:
+			print('3')
+			return {'uniqueid': self.uniqueId, 'uniqueurl': self.uniqueUrl, 'move': request.form['move']}
 		
 class RequestHandler:
 	def __init__(self):
 		print('Request handler init')
 		
 	def dispatchRequest(self, rq):
-		if rq.requestKind == 0:
-			self.handleNewGameRequest(rq)
-		if rq.requestKind == 1:
-			self.handleJoinGameRequest(rq)
-		if rq.requestKind == 2:
-			self.handleGameUpdateRequest(rq)
-		if rq.requestKind == 3:
-			self.handleMoveRequest(rq)
+		print('dispatching request')
+		if rq.requestKind != False:
+			if rq.requestKind == 0:
+				self.handleNewGameRequest(rq)
+			if rq.requestKind == 1:
+				self.handleJoinGameRequest(rq)
+			if rq.requestKind == 2:
+				self.handleGameUpdateRequest(rq)
+			if rq.requestKind == 3:
+				self.handleMoveRequest(rq)
+		else:
+			return False
 			
-	def handleNewGameRequest(self, params):
+	def handleNewGameRequest(self, rq):
 		print('handling new game request')
+		print(rq.params)
 	
-	def handleJoinGameRequest(self, params):
+	def handleJoinGameRequest(self, rq):
 		print('handling join game request')
+		print(rq.params)
 	
-	def handleGameUpdateRequest(self, params):
+	def handleGameUpdateRequest(self, rq):
 		print('handling game udpate request')
+		print(rq.params)
 		
-	def handleMoveRequest(self, params):
+	def handleMoveRequest(self, rq):
 		print('handling move request')
+		print(rq.params)
+		
 		
 				
 				
@@ -110,22 +139,33 @@ class Server:
 		self.RequestHandler = RequestHandler()
 		self.ip = '127.0.0.1'
 		self.port = '80'
+		self.app = Flask(__name__)
 		self.startListening()
 		
 	def startListening(self):
 		print('listening')
 		#CODE THAT
 		#on request:
-		received = 0
-		self.RequestHandler.dispatchRequest(Request(received))
 		
-
-
+		@self.app.route("/", methods = ['GET'])
+		def index():
+			return "index"
+			
+		@self.app.route("/move/<uniqueurl>/<int:uniqueid>", methods = ['POST'])
+		def move(uniqueurl, uniqueid):
+			print('received request on /move')
+			res = self.RequestHandler.dispatchRequest(Request(uniqueurl = uniqueurl, 
+														uniqueid = uniqueid, 
+														requestKind = 3
+														))
+			return "lel"
+			
+		self.app.run()
+		#received = 0
+		#self.RequestHandler.dispatchRequest(Request(received))
 s = Server()
 
-
-
-
+#r = Request(rqObject = "lele", uniqueurl = 'eele', uniqueid = 'elele', requestKind = 4)
 
 
 

@@ -1,7 +1,7 @@
 rest api
 
-POST /uniqueurl/uniqueid/move Params : move
-GET /uniqueurl/gameupdate 
+POST move/uniqueurl/uniqueid Params : move
+GET gameupdate/uniqueurl/ 
 GET /createnewgame
-GET /joingame
+GET /joingame/uniqueurl
  
