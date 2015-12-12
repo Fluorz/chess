@@ -101,10 +101,8 @@ class Rook:
 				#print('2 : X : ' + str(x - i) + ' Y : ' + str(y + i))
 				arr.append([x - i, y + i])
 		return arr
-r = Rook()
-print(r.canAccessPosition(1, 4, 5, 1, 2))
-			
-			
+
+
 			
 			
 			

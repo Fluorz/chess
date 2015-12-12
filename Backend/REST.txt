@@ -1,0 +1,7 @@
+rest api
+
+POST /uniqueurl/uniqueid/move Params : move
+GET /uniqueurl/gameupdate 
+GET /createnewgame
+GET /joingame
+ 
