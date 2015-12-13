@@ -81,7 +81,7 @@ class Knight:
 		return arr
 		
 
-class Rook:
+class Bishop:
 	def canAccessPosition(self, joueur, x, y, newX, newY):
 		if 1 <= x <= 8 and 1 <= y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8:
 			if [newX, newY] in self.getAvailablePositions(x, y):
@@ -102,12 +102,28 @@ class Rook:
 				arr.append([x - i, y + i])
 		return arr
 
+class Rook:
+	def canAccessPosition(self, joueur, x, y, newX, newY):
+		if 1 <= x <= 8 and 1 <= y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8:
+			if [newX, newY] in self.getAvailablePositions(x, y):
+				return True
+			else:
+				return False
+		else:
+			return False
+	
+	def getAvailablePositions(self, x, y):
+		arr = []
+		for i in range(0, 9):
+			arr.append([x + i, y])
+			arr.append([x - i, y])
+			arr.append([x, y + i])
+			arr.append([x, y - i])
+		return arr
 
-			
-			
-			
-			
-			
-			
+		
+		
+		
+		
 		
 		
