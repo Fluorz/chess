@@ -8,7 +8,7 @@ from RequestHandler import RequestHandler
 class Server:
 	def __init__(self):
 		self.RequestHandler = RequestHandler()
-		self.app = Flask(__name__)
+		self.app = Flask(__name__) 
 		self.startListening()
 		
 	def startListening(self):

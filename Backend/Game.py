@@ -1,4 +1,4 @@
-from pieces import *
+from Pieces import *
 
 
 class Game:
@@ -41,6 +41,6 @@ class Game:
 			
 	def join(self):
 		self.players += 1
-		if self.players = 2:
+		if self.players == 2:
 			self.initBoard()
 		print('added 1')
