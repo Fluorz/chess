@@ -48,4 +48,15 @@ class Server:
 		
 		self.app.run()
 		
+		
+		
+		
 s = Server()
+
+
+
+
+
+
+
+

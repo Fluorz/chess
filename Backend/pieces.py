@@ -120,3 +120,10 @@ class Rook:
 			arr.append([x, y + i])
 			arr.append([x, y - i])
 		return arr
+
+		
+		
+		
+		
+		
+		
