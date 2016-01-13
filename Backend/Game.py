@@ -2,12 +2,11 @@ from Pieces import *
 
 
 class Game:
-	def __init__(self, url):
-		self.url = url
+	def __init__(self):
 		self.ready = False
 		self.players = 0
 		self.board = []
-		playerTurn = 0
+		self.playerTurn = 0
 		
 	def initBoard(self):
 		self.board = [[0, '.', 1, 1], [0, '.', 1, 2], [0, '.', 1, 3], [0, '.', 1, 4], 
@@ -44,3 +43,6 @@ class Game:
 		if self.players == 2:
 			self.initBoard()
 		print('added 1')
+
+	def doMove(self, move):
+		return 'ayy'

@@ -3,7 +3,7 @@ from Game import Game
 
 class SessionStorage:
 	def __init__(self):
-		self.sessions = [['456', [12, 13], Game(456)]]
+		self.sessions = [['456', [12, 13], Game()]]
 		#sessions : [[uniqueurl, [player1uniqueid, player2uniqueid], Game], [...]]
 			
 	def generateUniqueIds(self):
@@ -64,11 +64,16 @@ class SessionStorage:
 	def move(self, uniqueid, uniqueurl, move):
 		i = self.gameExists(uniqueurl)
 		if i is not None:
-			if self.sessions[1][self.sessions[i][2].playerTurn] == uniqueid:
+			print('lmao')
+			print(self.sessions[i][1][self.sessions[i][2].playerTurn])
+			if self.sessions[i][1][self.sessions[i][2].playerTurn] == uniqueid:
 				print('kkk')
-				# WOrking so far. TODO : finish this. 
+				res = self.sessions[i][2].doMove(move)
+				return res
 			else:
 				print('nnn')
+		else:
+			print('eeeeredfd')
 			
 					
 					

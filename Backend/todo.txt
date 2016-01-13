@@ -47,27 +47,10 @@ Erreur ['type', 'joueur']
 
 
 
+ISSUES : 
+JSONify move and stuff
 
 
-
-
-
-
-
-
-
-if(move[1] == 'pion'):
-	if Pion.canMove(joueur, x, y, newX, newY):
-		for i in range(0, len(ech)):
-			if ech[i][2] == newX and ech[i][3] == newY:
-				if ech[i][0] == joueurQuiJoue:
-					PAS LE DROIT DE MANGER TES PIONS
-				else:
-					OK TU BOUFFE
-		
-if(move[1] == 'fou')::
-	if Fou.canMove(x, y, newX, newY):
-		
 
 
 
