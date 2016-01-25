@@ -64,10 +64,7 @@ class SessionStorage:
 	def move(self, uniqueid, uniqueurl, move):
 		i = self.gameExists(uniqueurl)
 		if i is not None:
-			print('lmao')
-			print(self.sessions[i][1][self.sessions[i][2].playerTurn])
 			if self.sessions[i][1][self.sessions[i][2].playerTurn] == uniqueid:
-				print('kkk')
 				res = self.sessions[i][2].doMove(move)
 				return res
 			else:

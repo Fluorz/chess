@@ -44,6 +44,6 @@ class RequestHandler:
 		print(rq.params)
 		res = self.SessionStorage.move(rq.params['uniqueid'], rq.params['uniqueurl'], rq.params['move'])
 		print("res move " + str(res))
-		return True
+		return res
 		
 		

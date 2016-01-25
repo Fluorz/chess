@@ -1,35 +1,50 @@
+class NoPiece:
+	def __init__(self, j, x, y):
+		self.x = x
+		self.y = y
+		self.j = j
+
+
 class Pawn:
-	def canAccessPosition(self, joueur, x, y, newX, newY):
-		if 1 <= x <= 8 and 1 <= y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8:
-			if [newX, newY] in self.getAvailablePositions(x, y):
+	def __init__(self, joueur, x, y):
+		self.x = x
+		self.y = y
+		self.joueur = joueur
+		
+	def getOwnerShip(self):
+		return self.joueur
+		
+	def canAccessPosition(self, newX, newY):
+		if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8:
+			if [newX, newY] in self.getAvailablePositions():
 				return True
 			else:
 				return False
 		else:
 			return False
 			
-	def getAvailablePositions(self, joueur, x, y):
+	def getAvailablePositions(self):
 		arr = []
-		if joueur == 0:
-			if y == 2:
-				arr.append([x, y + 2])
-				arr.append([x, y + 1])
-				arr.append([x - 1, y + 1])
-				arr.append([x + 1, y + 1])
+		if self.joueur == 0:
+			if self.y == 2:
+				arr.append([self.x, self.y + 2])
+				arr.append([self.x, self.y + 1])
+				arr.append([self.x - 1, self.y + 1])
+				arr.append([self.x + 1, self.y + 1])
 			else:
-				arr.append([x, y + 1])
-				arr.append([x + 1, y + 1])
-				arr.append([x - 1, y + 1])
+				arr.append([self.x, self.y + 1])
+				arr.append([self.x + 1, self.y + 1])
+				arr.append([self.x - 1, self.y + 1])
 		else:
-			if y == 7:
-				arr.append([x, y - 2])
-				arr.append([x, y - 1])
-				arr.append([x - 1, y - 1])
-				arr.append([x + 1, y - 1])
+			if self.y == 7:
+				arr.append([self.x, self.y - 2])
+				arr.append([self.x, self.y - 1])
+				arr.append([self.x - 1, self.y - 1])
+				arr.append([self.x + 1, self.y - 1])
 			else:				
-				arr.append([x, y - 1])
-				arr.append([x + 1, y - 1])
-				arr.append([x - 1, y - 1])
+				arr.append([self.x, self.y - 1])
+				arr.append([self.x + 1, self.y - 1])
+				arr.append([self.x - 1, self.y - 1])
 		return arr
 		
 class King:
