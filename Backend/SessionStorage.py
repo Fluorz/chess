@@ -49,10 +49,6 @@ class SessionStorage:
 			
 	def gameExists(self, uniqueurl):
 		for i in range(0, len(self.sessions)):
-			print('ererere ' + str(self.sessions[i]))
-			print('eeeee ' + str(i))
-			print(type(uniqueurl))
-			print(type(self.sessions[i][0]))
 			if self.sessions[i][0] == uniqueurl:
 				print('game exists')
 				return i

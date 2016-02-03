@@ -21,6 +21,7 @@ class Server:
 		@self.app.route("/move/<uniqueurl>/<int:uniqueid>", methods = ['POST'])
 		def move(uniqueurl, uniqueid):
 			print('received request on /move')
+			print(uniqueurl)
 			res = self.RequestHandler.dispatchRequest(Request(uniqueurl = uniqueurl, 
 														uniqueid = uniqueid, 
 														requestKind = RequestKind.MoveRequest

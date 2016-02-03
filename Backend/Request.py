@@ -1,5 +1,6 @@
 from flask import request
 from RequestKind import RequestKind
+import json
 		
 class Request:
 	def __init__(self, uniqueurl = -1, uniqueid = -1, requestKind = -1):
@@ -11,7 +12,6 @@ class Request:
 				self.uniqueId = uniqueid
 			if uniqueurl != -1:
 				self.uniqueUrl = uniqueurl
-			
 			self.requestKind = requestKind
 			print('rq2 ' + str(self.requestKind))
 			self.params = self.parseParams()
@@ -34,5 +34,7 @@ class Request:
 			return {'uniqueurl': self.uniqueUrl}
 		if self.requestKind == RequestKind.MoveRequest:
 			print('3')
-			return {'uniqueid': self.uniqueId, 'uniqueurl': self.uniqueUrl, 'move': request.form['move']}
+			print('parsing move request')
+			moveParams = json.loads(request.form['move'])
+			return {'uniqueid': self.uniqueId, 'uniqueurl': self.uniqueUrl, 'move': moveParams}
 		
