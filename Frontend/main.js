@@ -39,7 +39,11 @@ function processClick(x, y) {
 }
 
 function sendMove(oldX, oldY, x, y){
+	var id = 12;
+	var url = 456;
     console.log('oldx ' + oldX + ' oldy ' + oldY + ' x ' + x + ' y ' + y);
-    // SEND XHR REQUEST
+	$.ajax('http://localhost/move/' + url.toString() + '/' + id.toString(), function(res){
+		console.log(res);
+	});
     isDragging = false;
 }

@@ -4,3 +4,4 @@ POST move/uniqueurl/uniqueid Params : move
 GET gameupdate/uniqueurl/ 
 GET /createnewgame
 GET /joingame/uniqueurl
+GET /debug
