@@ -5,8 +5,18 @@ from Request import Request
 from RequestHandler import RequestHandler
 from Logger import Logger
 
+'''
+Classe qui gère l'API REST
+'''
+
 class Server:
 
+    '''
+    DONE
+    Initialisation du serveur
+    Args : ip du serveur, port du serveur
+    Return : Aucun
+    '''
     def __init__(self, ip, port):
         self.ip = ip
         self.port = port
@@ -16,15 +26,33 @@ class Server:
         self.app.debug = False
         self.startListening()
 
+    '''
+    DONE
+    Démarre vraiment le serveur (API REST)
+    Args : Aucun
+    Return Aucun
+    '''
     def startListening(self):
         Logger.log('Listening')
 
+        '''
+        TODO 
+        Gère les requètes sur /
+        Args : Aucun
+        Return : Code html de la page d'index (pas fini)
+        '''
         @self.app.route("/", methods=['GET'])
         def index():
             Logger.printCurrentState(
                 self.RequestHandler.SessionStorage.sessions)
             return "index"
             
+        '''
+        DONE
+        Gère les requètes sur /move/url/id
+        Args : Une url unique de partie, l'id de la personne qui joue, une réprésentation JSON du mouvement par POST
+        Return : JSON
+        '''
         @self.app.route("/move/<uniqueurl>/<int:uniqueid>", methods=['POST'])
         def move(uniqueurl, uniqueid):
             Logger.printCurrentState(
@@ -36,7 +64,6 @@ class Server:
                     uniqueurl=uniqueurl,
                     uniqueid=uniqueid,
                     requestKind=RequestKind.MoveRequest))
-            # NEED TO IMPLEMENT THE MOVE FUCNTION
             return str(res)
 
         @self.app.route("/createnewgame", methods=['GET'])
