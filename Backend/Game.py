@@ -134,6 +134,41 @@ class Game:
         resData['playerTurn'] = self.playerTurn
         return json.dumps(resData)
             
+    '''
+    To do
+    Fonctions pour savoir si il y a echec
+    '''
+
+    from Pieces import *
+
+     '''
+     Done
+     args: liste des pieces, le x et y du roi
+     return: si il y a echec ou pas
+     '''
+    def echec(self, liste, xKing, yKing):
+        tableau=[]
+        for i in liste:
+            if i.canAccessPosition(xKing, yKing):
+                tableau.append(i)
+                return True 
+
+        return False
+    
+    '''
+     To do
+     
+     return: si il y a une piece sur le chemin qui pourrait gener le deplacement ou pas
+    '''
+     def piece_sur_le_chemin(self, xKing, yKing, liste):
+          
+                
+               
+               
+          
+          
+     
+
         
         
         
