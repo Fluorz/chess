@@ -1,8 +1,17 @@
 from inspect import *
 from Options import RunOptions
 
+'''
+Classe qui s'occupe du logging
+'''
 class Logger:
-
+    
+    '''
+    DONE
+    Affiche l'état du jeux. 
+    Args : Array des sessions
+    Return : Aucun
+    '''
     @staticmethod
     def printCurrentState(gameState):
         print('\n\n-----GAME STATE-----\n')
@@ -11,6 +20,12 @@ class Logger:
             print('Session url : {0} - Session player ids : {1}'.format(i[0], i[1]))
         print('\n--------------------\n\n')
 
+    '''
+    DONE
+    Affiche un message, avec plus d'infos que print()
+    Args : Message à afficher
+    Return : Aucun
+    '''
     @staticmethod
     def log(message):
         caller = getframeinfo(stack()[1][0])
