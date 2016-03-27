@@ -3,17 +3,17 @@ from RequestKind import RequestKind
 import json
 from Logger import Logger
 
-'''
-Classe qui représente les requètes et leurs paramètres
-'''
+#
+# Classe qui représente les requètes et leurs paramètres
+#
 class Request:
 
-    '''
-    DONE
-    Initialisation
-    Args : url unique (facultative), id unique (facultatif), id de requête (facultatif)
-    Return : Aucun
-    '''
+    #
+    # DONE
+    # Initialisation
+    # Args : url unique (facultative), id unique (facultatif), id de requête (facultatif)
+    # Return : Aucun
+    #
     def __init__(self, uniqueurl=-1, uniqueid=-1, requestKind=-1):
         if (requestKind != -1):
             if uniqueid != -1:
@@ -26,12 +26,12 @@ class Request:
         else:
             self.requestKind = False
 
-    '''
-    DONE
-    Analyse des paramètres
-    Args : Aucun
-    Return : Tableau des paramètres nécessaires
-    '''
+    #
+    # DONE
+    # Analyse des paramètres
+    # Args : Aucun
+    # Return : Tableau des paramètres nécessaires
+    #
     def parseParams(self):
         if self.requestKind == -1:
             return False
