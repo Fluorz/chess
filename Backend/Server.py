@@ -6,7 +6,7 @@ from RequestKind import RequestKind
 from Request import Request
 from RequestHandler import RequestHandler
 from Logger import Logger
-
+from flask.ext.cors import CORS
 
 #Classe qui gère l'API REST
 
@@ -25,6 +25,7 @@ class Server:
         self.RequestHandler = RequestHandler()
         self.app = Flask(__name__)
         self.app.debug = False
+        CORS(self.app)
         self.startListening()
 
     # 
@@ -59,7 +60,6 @@ class Server:
             Logger.printCurrentState(
                 self.RequestHandler.SessionStorage.sessions)
             Logger.log('Received request on /move')
-            Logger.log(uniqueurl)
             res = self.RequestHandler.dispatchRequest(
                 Request(
                     uniqueurl=uniqueurl,
