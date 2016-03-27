@@ -12,8 +12,6 @@ from Logger import Logger
 
 class Server:
     
-    #BECAUSE FUCK PYTHON
-
     #
     #DONE
     #Initialisation du serveur
@@ -70,6 +68,12 @@ class Server:
             return str(res)
             
             
+        #
+        # DONE
+        # Gère les requètes sur /createnewgame
+        # Args : Aucun
+        # Return : ID de la game créée. 
+        #
         @self.app.route("/createnewgame", methods=['GET'])
         def create():
             Logger.printCurrentState(
@@ -79,7 +83,12 @@ class Server:
                 Request(requestKind=RequestKind.CreateNewGameRequest))
             r = res['uniqueurl']  # NEED TO DO SOME CHEKCING HERE
             return str(r)
-
+        #
+        # DONE
+        # Gère les requètes sur /joingame/uniqueurl
+        # Args : Url unique
+        # Return : Id de joueur si la game peut être créée, False sinon
+        #
         @self.app.route("/joingame/<int:uniqueurl>", methods=['GET'])
         def join(uniqueurl):
             Logger.printCurrentState(
@@ -88,7 +97,13 @@ class Server:
             res = self.RequestHandler.dispatchRequest(
                 Request(requestKind=RequestKind.JoinGameRequest, uniqueurl=uniqueurl))
             return str(res)
-            
+        
+        #
+        # DONE
+        # Gère les requètes sur /gameupdate/uniqueurl
+        # Args : Url unique
+        # Return : JSON représentant la partie
+        # 
         @self.app.route("/gameupdate/<int:uniqueurl>", methods=['GET'])
         def update(uniqueurl):
             Logger.printCurrentState(self.RequestHandler.SessionStorage.sessions)
@@ -97,6 +112,12 @@ class Server:
                 Request(requestKind=RequestKind.GameUpdateRequest, uniqueurl=uniqueurl))
             return res
         
+        # 
+        # DONE
+        # Url de debug
+        # Args : Aucun
+        # Return : Renvoie les sessions stockées, à supprimer en prod.
+        #
         @self.app.route("/debug", methods=['GET'])
         def debug():
             return str(self.RequestHandler.SessionStorage.sessions)
@@ -104,4 +125,3 @@ class Server:
         
 
         self.app.run(host=self.ip, port=self.port)
-

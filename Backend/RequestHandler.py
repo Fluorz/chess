@@ -47,15 +47,34 @@ class RequestHandler:
         Logger.log('Handling new game')
         res = self.SessionStorage.addNewSession()
         return res
-
+        
+    
+    #
+    # DONE
+    # Fonction qui gère les requètes de join
+    # Args : Objet Request
+    # Return : Id de joueur
+    #
     def handleJoinGameRequest(self, rq):
         res = self.SessionStorage.joinGame(rq.params['uniqueurl'])
         return res
-
+    
+    #
+    # DONE
+    # Fonction qui geère les requètes de mise à jour de la game
+    # Args : Objet Request
+    # Return : Json de la partie
+    #
     def handleGameUpdateRequest(self, rq):
         res = self.SessionStorage.getGameStateJson(rq.params['uniqueurl'])
         return res
-
+    
+    # 
+    # TODO
+    # Fonction qui gère les requètes de mouvement
+    # Args : Objet Request
+    # Return : TODO
+    #
     def handleMoveRequest(self, rq):
         res = self.SessionStorage.move(
             rq.params['uniqueid'],

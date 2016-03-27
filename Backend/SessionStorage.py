@@ -122,5 +122,3 @@ class SessionStorage:
                 Logger.log('nnn')
         else:
             Logger.log('eeeeredfd')
-
-    
