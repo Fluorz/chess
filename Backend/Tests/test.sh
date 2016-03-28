@@ -1,10 +1,10 @@
 #!/bin/bash
 
-url=$(curl --silent http://localhost:8000/createnewgame)
+url=$(curl --silent http://localhost:8000/createnewgame | jq '.uniqueurl') 
 echo "url : $url"
-firstId=$(curl --silent http://localhost:8000/joingame/$url)
+firstId=$(curl --silent http://localhost:8000/joingame/$url | jq '.id')
 echo "first Id : $firstId"
-secondId=$(curl --silent http://localhost:8000/joingame/$url)
+secondId=$(curl --silent http://localhost:8000/joingame/$url | jq '.id')
 echo "second Id : $secondId"
 thirdId=$(curl --silent http://localhost:8000/joingame/$url)
 if [ "False" != "$thirdId" ];
