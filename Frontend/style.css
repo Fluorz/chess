@@ -12,9 +12,19 @@
 }
 
 
+.black{
+    color: white;
+    background-color: black;
+}
+
+.white{
+    color: black;
+    background-color: white;
+}
+
 th {
     color: #D5DDE5;
-    background: #1b1e24;
+    background: gray;
     border-bottom: 4px solid #9ea7af;
     border-right: 1px solid #343a45;
     font-size: 23px;
@@ -61,6 +71,6 @@ td:last-child {
 }
 
 .num {
-    background-color: #1b1e24 !important;
-    color: #D5DDE5;
+    background-color: gray !important;
+    color: white;
 }

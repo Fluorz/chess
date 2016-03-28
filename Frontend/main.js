@@ -1,6 +1,7 @@
 var isDragging = false;
 var oldPos = [-1, -1];
-var playerTurn = -1;
+var playerTurn = -1; // Tour auquel le joueur peut jouer
+var turn = -1; // Tour en cours
 var url = -1;
 var id = -1;
 var ready = false;
@@ -13,7 +14,7 @@ Args : x et y de la pièce sur l'échiquier
 Return - Callback : Aucun.
 */
 var processClick = function(x, y){
-    if(ready === true){
+    if(ready === true && playerTurn === turn){
         if(isDragging === false){
             oldPos = [x, y];
             isDragging = true;
@@ -23,7 +24,7 @@ var processClick = function(x, y){
         }   
     }
     else{
-        alert('The game isn\'t ready. Please wait for another player to join.');
+        alert('The game isn\'t ready. Please wait for another player to join, or it is not your turn yet.');
     }
 };
 
@@ -110,7 +111,7 @@ $(function(){
                 refresh(data, function(){
                     setInterval(function(){
                         getGameState(function(temp){
-                            refresh(temp)
+                            refresh(temp);
                         });
                     }, 10000);
                 });
@@ -169,6 +170,7 @@ $(function(){
             if(data != 'False'){
                 var parsed = JSON.parse(data);
                 id = parsed.id;
+                playerTurn = parsed.turn;
                 cb();
             }
             else{
@@ -200,9 +202,16 @@ $(function(){
             }
             //html += '<td onclick="processClick(' + x + ', ' + y + ');"><img src="assets/roi32x32noir.png"></td>';
             var index = getIndexFromPosition(y, x);
-            if(game.board[index] != 'E'){
-                html += '<td onclick="processClick(' + x + ', ' + y + ');">' + game.board[index] + '</td>'; // (y, x) et pas (x, y). Pourquoi? Je ne sais pas. Mais ça march
+            if(game.board[index][0] != 'E'){
+                if(game.board[index][1] === 0){
+                    html += '<td class="white" onclick="processClick(' + x + ', ' + y + ');">' + game.board[index][0] + '</td>'; // (y, x) et pas (x, y). Pourquoi? Je ne sais pas. Mais ça march    
+                }
+                else{
+                    html += '<td class="black" onclick="processClick(' + x + ', ' + y + ');">' + game.board[index][0] + '</td>'; // (y, x) et pas (x, y). Pourquoi? Je ne sais pas. Mais ça march    
+                }
+                
             }
+            
             else{
                 html += '<td onclick="processClick(' + x + ', ' + y + ');"></td>';
             }
@@ -223,6 +232,7 @@ $(function(){
     var getGameState = function(cb){
         console.log('getting game state');
         $.ajax('http://localhost:8000/gameupdate/' + url).done(function(data){
+            console.log(JSON.parse(data));
             cb(JSON.parse(data));
         });
     };
@@ -246,6 +256,7 @@ $(function(){
     var refresh = function(newB, cb) { // cb is optional, not using it in the main setInterval
         if(newB.board != game.board){
             game = newB;
+            turn = game.playerTurn;
             flushHtml();
             render();
             if(cb !== undefined){ // Only calling the cb if it is needed
