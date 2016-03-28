@@ -14,6 +14,5 @@ else
 echo "couldn't request a third id, GOOD"
 fi
 status=$(curl --silent http://localhost:8000/debug)
-games=$(echo "$status" | tr " " "\n" | grep -c "Game.Game") #http://stackoverflow.com/questions/26212889/bash-counting-substrings-in-a-string
+games=$(echo "$status" | tr " " "\n" | grep -c "Game.Game") #http://stackoverflow.com/questions/26212889/
 echo "$games games"
-

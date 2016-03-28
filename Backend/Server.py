@@ -81,8 +81,8 @@ class Server:
             Logger.log('Received request on /createnewgame')
             res = self.RequestHandler.dispatchRequest(
                 Request(requestKind=RequestKind.CreateNewGameRequest))
-            r = res['uniqueurl']  # NEED TO DO SOME CHEKCING HERE
-            return str(r)
+            Logger.log(res)
+            return str(res)
         #
         # DONE
         # Gère les requètes sur /joingame/uniqueurl
@@ -110,7 +110,7 @@ class Server:
             Logger.log('Received a request on /gameupdate')
             res = self.RequestHandler.dispatchRequest(
                 Request(requestKind=RequestKind.GameUpdateRequest, uniqueurl=uniqueurl))
-            return res
+            return str(res)
         
         # 
         # DONE
@@ -122,6 +122,5 @@ class Server:
         def debug():
             return str(self.RequestHandler.SessionStorage.sessions)
             
-        
 
         self.app.run(host=self.ip, port=self.port)

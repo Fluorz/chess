@@ -16,11 +16,20 @@ Return - Callback : Aucun.
 var processClick = function(x, y){
     if(ready === true && playerTurn === turn){
         if(isDragging === false){
+            console.log('dragging');
             oldPos = [x, y];
             isDragging = true;
         }
         else{
-            sendMove(oldPos[0], oldPos[1], x, y);
+            if(oldPos[0] != x || oldPos[1] != y){
+                console.log('sending');
+                sendMove(oldPos[0], oldPos[1], x, y);   
+            }
+            else{
+                console.log('canceling');
+                isDragging = false;
+                oldPos = [-1, -1];
+            }
         }   
     }
     else{
@@ -272,9 +281,3 @@ $(function(){
         ready = game.ready;
     };
 });
-
-
-
-
-
-
