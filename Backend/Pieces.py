@@ -1,9 +1,9 @@
 class NoPiece:
 
-    def __init__(self, j, x, y):
+    def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.j = j
+        self.joueur = -1
         self.__name__ = 'E'
 
 
@@ -69,7 +69,7 @@ class King:
                 return True
             else:
                 return False
-        else:
+        else: 
             return False
 
     def getAvailablePositions(self): #Inventaire de toutes les positions valides
