@@ -1,9 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from Pieces import *
-from Logger import Logger
-import json
-
 class Game:
 
     #
@@ -27,70 +21,70 @@ class Game:
     #
     def initBoard(self):
         self.board = [
-            NoPiece(1, 1),
-            NoPiece(1, 2),
-            NoPiece(1, 3),
-            NoPiece(1, 4),
-            NoPiece(1, 5),
-            NoPiece(1, 6),
-            NoPiece(1, 7),
-            NoPiece(1, 8),
-            NoPiece(2, 1),
-            NoPiece(2, 2),
-            NoPiece(2, 3),
-            Pawn(0, 2, 4),
-            NoPiece(2, 5),
-            NoPiece(2, 6),
-            NoPiece(2, 7),
-            NoPiece(2, 8),
-            NoPiece(3, 1),
-            NoPiece(3, 2),
-            NoPiece(3, 3),
-            NoPiece(3, 4),
-            NoPiece(3, 5),
-            NoPiece(3, 6),
-            King(1, 3, 7),
-            NoPiece(3, 8),
-            NoPiece(4, 1),
-            NoPiece(4, 2),
-            NoPiece(4, 3),
-            NoPiece(4, 4),
-            NoPiece(4, 5),
-            NoPiece(4, 6),
-            NoPiece(4, 7),
-            NoPiece(4, 8),
-            NoPiece(5, 1),
-            NoPiece(5, 2),
-            NoPiece(5, 3),
-            NoPiece(5, 4),
-            NoPiece(5, 5),
-            NoPiece(5, 6),
-            NoPiece(5, 7),
-            Knight(0, 5, 8),
-            NoPiece(6, 1),
-            NoPiece(6, 2),
-            NoPiece(6, 3),
-            NoPiece(6, 4),
-            NoPiece(6, 5),
-            NoPiece(6, 6),
-            NoPiece(6, 7),
-            Bishop(1, 6, 8),
-            NoPiece(7, 1),
-            NoPiece(7, 2),
-            NoPiece(7, 3),
-            NoPiece(7, 4),
-            NoPiece(7, 5),
-            NoPiece(7, 6),
-            NoPiece(7, 7),
-            NoPiece(7, 8),
-            NoPiece(8, 1),
-            NoPiece(8, 2),
-            NoPiece(8, 3),
-            NoPiece(8, 4),
-            NoPiece(8, 5),
-            NoPiece(8, 6),
-            NoPiece(8, 7),
-            NoPiece(8, 8)
+            NoPiece(0, 1, 1),
+            NoPiece(0, 1, 2),
+            NoPiece(0, 1, 3),
+            NoPiece(0, 1, 4),
+            NoPiece(0, 1, 5),
+            NoPiece(0, 1, 6),
+            NoPiece(0, 1, 7),
+            NoPiece(0, 1, 8),
+            NoPiece(0, 2, 1),
+            NoPiece(0, 2, 2),
+            NoPiece(0, 2, 3),
+            NoPiece(0, 2, 4),
+            NoPiece(0, 2, 5),
+            NoPiece(0, 2, 6),
+            NoPiece(0, 2, 7),
+            NoPiece(0, 2, 8),
+            NoPiece(0, 3, 1),
+            NoPiece(0, 3, 2),
+            NoPiece(0, 3, 3),
+            NoPiece(0, 3, 4),
+            NoPiece(0, 3, 5),
+            NoPiece(0, 3, 6),
+            NoPiece(0, 3, 7),
+            NoPiece(0, 3, 8),
+            NoPiece(0, 4, 1),
+            NoPiece(0, 4, 2),
+            NoPiece(0, 4, 3),
+            NoPiece(0, 4, 4),
+            NoPiece(0, 4, 5),
+            NoPiece(0, 4, 6),
+            NoPiece(0, 4, 7),
+            NoPiece(0, 4, 8),
+            NoPiece(0, 5, 1),
+            NoPiece(0, 5, 2),
+            NoPiece(0, 5, 3),
+            NoPiece(0, 5, 4),
+            NoPiece(0, 5, 5),
+            NoPiece(0, 5, 6),
+            NoPiece(0, 5, 7),
+            NoPiece(0, 5, 8),
+            NoPiece(0, 6, 1),
+            NoPiece(0, 6, 2),
+            NoPiece(0, 6, 3),
+            NoPiece(0, 6, 4),
+            NoPiece(0, 6, 5),
+            NoPiece(0, 6, 6),
+            NoPiece(0, 6, 7),
+            NoPiece(0, 6, 8),
+            NoPiece(0, 7, 1),
+            NoPiece(0, 7, 2),
+            NoPiece(0, 7, 3),
+            NoPiece(0, 7, 4),
+            NoPiece(0, 7, 5),
+            NoPiece(0, 7, 6),
+            NoPiece(0, 7, 7),
+            NoPiece(0, 7, 8),
+            NoPiece(0, 8, 1),
+            NoPiece(0, 8, 2),
+            NoPiece(0, 8, 3),
+            NoPiece(0, 8, 4),
+            NoPiece(0, 8, 5),
+            NoPiece(0, 8, 6),
+            NoPiece(0, 8, 7),
+            NoPiece(0, 8, 8)
             ]
 
     #
@@ -107,18 +101,20 @@ class Game:
     # Args : L'index de la pièce qui va bouger
     # Return : Aucun
     #
-    def updateBoard(self, move):
-        oldPieceIndex = self.getPieceIndex(move['oldX'], move['oldY'])
-        oldPiece = self.board[oldPieceIndex]
-        Logger.log(oldPiece.__name__)
-        tempBoard = self.board
-        for i in range(len(self.board)):
-            if self.board[i].x == move['x'] and self.board[i].y == move['y']:
-                if isinstance(self.board[oldPieceIndex], Pawn):
-                    self.board[i] = Pawn(move['id'], move['x'], move['y'])
-                    self.board[oldPieceIndex] = NoPiece(move['oldX'], move['oldY'])
-                    
-                
+    def updateBoard(
+        self,
+        index,
+        newX,
+        newY,
+        ):
+        for i in range(0, len(self.board)):
+            if self.board[i].x == newX and self.board[i].y == newY:
+                newBoard = self.board
+                newBoard[i] = self.board[index]
+                newBoard[index] = NoPiece(self.board[index].j,
+                        self.board[index].x, self.board[index].y)
+                self.board = newBoard
+
     #
     # DONE
     # Un joueur peut-il rejoindre la partie?
@@ -139,7 +135,6 @@ class Game:
     def join(self):
         self.players += 1
         if self.players == 2:
-            self.ready = True
             self.initBoard()
 
     #
@@ -149,26 +144,13 @@ class Game:
     # Return : index de la coordonnée si il n'y a pas de pièce, True sinon
     #
     def isSpaceOccupied(self, x, y):
-        for i in range(len(self.board)):
-            if self.board[i].x == x and self.board[i].y == y:
-                if isinstance(self.board[i], NoPiece):
+        for i in range(0, len(self.board)):
+            if self.board[i][0].x == x and self.board[i][1].y == y:
+                if isinstance(self.board[i][1], NoPiece):
                     return i
                 else:
                     return True
-                    
-    
-    #
-    # DONE
-    # Renvoie l'index d'une pièce en fonction de son x et y
-    # Args : x, y de la pièce
-    # Return : index de la pièce si elle est dans le tableau, False 
-    #
-    def getPieceIndex(self, x, y):
-        for i in range(len(self.board)):
-            if self.board[i].x == x and self.board[i].y == y:
-                return i
-        return False
-    
+
     #
     # TODO
     # S'occupe de bouger les pièces sur l'échiquier 
@@ -176,31 +158,59 @@ class Game:
     # Return : Sais pas encore (pas fini)
     #
     def doMove(self, move):
-       #Logger.log(move)
-        r = self.isSpaceOccupied(move['x'], move['y'])
+        r = self.isSpaceOccupied(move['newX'], move['newY'])
         if r is True:
             return 'space taken'
         elif isinstance(r, int):
-            self.updateBoard(move)
+            self.updateBoard()
+    
     #
     # DONE
     # Renvoie une représentation JSON du tableau contenant les pièces
     # Args : Aucun
-    # Return : tableau contenant les pièces et le tour du joueur
+    # Return : JSON du tableau contenant les pièces et le tour du joueur
     #
-    def getState(self):
+    def getJson(self):
         resData = {}
         tempBoard = self.board
-        for i in range(len(tempBoard)):
-            if type(tempBoard[i]) is not str and type(tempBoard[i]) is not list:
-                tempBoard[i] = [tempBoard[i].__name__, tempBoard[i].joueur]
-        
+        for i in range(0, len(tempBoard)):
+            if type(tempBoard[i]) is not str:
+                tempBoard[i] = tempBoard[i].__name__
         resData['board'] = tempBoard
         resData['playerTurn'] = self.playerTurn
-        resData['ready'] = self.ready
-        return resData
- 
- 
+        return json.dumps(resData)
+            
+    #
+    #To do
+    #Fonctions pour savoir si il y a echec
+    #
+
+    from Pieces import *
+
+     #
+     #Done
+     #args: liste des pieces, le x et y du roi
+     #return: si il y a echec ou pas
+     #'''
+    def echec(self, liste, xKing, yKing):
+        tableau=[]
+        for i in liste:
+            if i.canAccessPosition(xKing, yKing):
+                tableau.append(i)
+                return True 
+
+        return False
+    
+    #
+    #To do
+    #return: si il y a une piece sur le chemin qui pourrait gener le deplacement ou pas
+    #
+     def piece_sur_le_chemin(self, xKing, yKing, liste):
+          
+                
+               
+               
+          
  
  
  
