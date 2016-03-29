@@ -1,8 +1,3 @@
-#
-#DONE 
-#Class qui signifie qui n'a pas de piece a cette place de l'echequier
-#
-
 class NoPiece:
 
     def __init__(self, j, x, y):
@@ -19,21 +14,10 @@ class Pawn:
         self.y = y
         self.joueur = joueur
         self.__name__ = 'P'
-        
-    #
-    #DONE
-    #Renvoi de quel joueur il s'agit
-    #Args: Aucun
-    #Return: id du joueur
-    #
-    
+
     def getOwnerShip(self):
         return self.joueur
-        
-    #
-    #DONE
-    #Determine si c'est dans l'echiquier et si le newX et newY concorde avec les possibilitÃ©s de dÃ©placement
-    #
+
     def canAccessPosition(self, newX, newY):
         if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8:
             if [newX, newY] in self.getAvailablePositions():
@@ -42,10 +26,7 @@ class Pawn:
                 return False
         else:
             return False
-    #
-    #DONE
-    #Inventaire des mouvements possibles
-    #
+
     def getAvailablePositions(self):
         arr = []
         if self.joueur == 0:
@@ -70,10 +51,7 @@ class Pawn:
                 arr.append([self.x - 1, self.y - 1])
         return arr
 
-#
-#DONE
-#Class pour le roi
-#
+
 class King:
 
     def __init__(self, joueur, x, y):
@@ -84,10 +62,7 @@ class King:
 
     def getOwnerShip(self):
         return self.joueur
-   #
-    #DONE
-    #IDEM
-    #
+
     def canAccessPosition(self, newX, newY):
         if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8: #Verifie que c'est dans l'echequier
             if [newX, newY] in self.getAvailablePositions(): #Verifie la disponibilite avec l'autre fonction, grace a l'inventaire
@@ -96,10 +71,7 @@ class King:
                 return False
         else:
             return False
-    #
-    #DONE
-    #IDEM
-    #
+
     def getAvailablePositions(self): #Inventaire de toutes les positions valides
         arr = []
         arr.append([self.x, y - 1])
@@ -112,10 +84,7 @@ class King:
         arr.append([self.x - 1, self.y - 1])
         return arr
 
-#
-#DONE
-#Class pour le cavalier
-#
+
 class Knight:
      def __init__(self, joueur, x, y):
         self.x = x
@@ -125,10 +94,7 @@ class Knight:
 
      def getOwnerShip(self):
         return self.joueur
-    #
-    #DONE
-    #IDEM
-    #
+
      def canAccessPosition(self, newX, newY):
         if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8: #Verifie que c'est dans l'echequier
             if [newX, newY] in self.getAvailablePositions(): #Verifie la disponibilite avec l'autre fonction, grace a l'inventaire
@@ -137,10 +103,7 @@ class Knight:
                 return False
         else:
             return False
-    #
-    #DONE
-    #IDEM
-    #
+
      def getAvailablePositions(self):
         arr = []
         arr.append([self.y + 2, self.x + 1])
@@ -157,10 +120,7 @@ class Knight:
             arr[i].reverse()
 
         return arr
-#
-#DONE
-#Class pour le fou
-#
+
 
 class Bishop:
 
@@ -172,10 +132,7 @@ class Bishop:
 
      def getOwnerShip(self):
         return self.joueur
-    #
-    #DONE
-    #IDEM
-    #
+
      def canAccessPosition(self, newX, newY):
         if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8: #Verifie que c'est dans l'echequier
             if [newX, newY] in self.getAvailablePositions(): #Verifie la disponibilite avec l'autre fonction, grace a l'inventaire
@@ -185,10 +142,7 @@ class Bishop:
         else:
             return False
 
-    #
-    #DONE
-    #IDEM
-    #
+
      def getAvailablePositions(self):
         arr = []
         for i in range(-8, 8):
@@ -200,10 +154,7 @@ class Bishop:
                 arr.append([self.x - i, self.y + i])
         return arr
 
-#
-#DONE
-#Class pour la tour
-#
+
 class Rook:
 
      def __init__(self, joueur, x, y):
@@ -214,10 +165,7 @@ class Rook:
 
      def getOwnerShip(self):
         return self.joueur
-    #
-    #DONE
-    #IDEM
-    #
+
      def canAccessPosition(self, newX, newY):
         if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8: #Verifie que c'est dans l'echequier
             if [newX, newY] in self.getAvailablePositions(): #Verifie la disponibilite avec l'autre fonction, grace a l'inventaire
@@ -226,10 +174,7 @@ class Rook:
                 return False
         else:
             return False
-    #
-    #DONE
-    #IDEM
-    #
+
      def getAvailablePositions(self):
         arr = []
         for i in range(0, 9):
