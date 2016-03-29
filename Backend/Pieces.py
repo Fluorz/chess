@@ -1,3 +1,7 @@
+#
+#DONE
+#class pas de piece
+#arg: aucun
 class NoPiece:
 
     def __init__(self, x, y):
@@ -6,7 +10,10 @@ class NoPiece:
         self.joueur = -1
         self.__name__ = 'E'
 
-
+#
+#DONE
+#class du pion
+#
 class Pawn:
 
     def __init__(self, joueur, x, y):
@@ -18,6 +25,7 @@ class Pawn:
     def getOwnerShip(self):
         return self.joueur
 
+#verifie que c'est dans l'echiquier
     def canAccessPosition(self, newX, newY):
         if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8:
             if [newX, newY] in self.getAvailablePositions():
@@ -26,7 +34,7 @@ class Pawn:
                 return False
         else:
             return False
-
+#inventaire des mouvemenrt (x et y) possible
     def getAvailablePositions(self):
         arr = []
         if self.joueur == 0:
@@ -51,7 +59,10 @@ class Pawn:
                 arr.append([self.x - 1, self.y - 1])
         return arr
 
-
+#
+#DONE
+#class du roi
+#
 class King:
 
     def __init__(self, joueur, x, y):
@@ -84,7 +95,10 @@ class King:
         arr.append([self.x - 1, self.y - 1])
         return arr
 
-
+#
+#Done
+#Class cavalier
+#
 class Knight:
      def __init__(self, joueur, x, y):
         self.x = x
@@ -121,7 +135,10 @@ class Knight:
 
         return arr
 
-
+#
+#DONE
+#class du fou
+#
 class Bishop:
 
      def __init__(self, joueur, x, y):
@@ -132,6 +149,7 @@ class Bishop:
 
      def getOwnerShip(self):
         return self.joueur
+#verifie que cest dans l'echiquier
 
      def canAccessPosition(self, newX, newY):
         if 1 <= self.x <= 8 and 1 <= self.y <= 8 and 1 <= newX <= 8 and 1 <= newY <= 8: #Verifie que c'est dans l'echequier
@@ -141,6 +159,7 @@ class Bishop:
                 return False
         else:
             return False
+#inventaire des mouvements possible
 
 
      def getAvailablePositions(self):
@@ -154,7 +173,10 @@ class Bishop:
                 arr.append([self.x - i, self.y + i])
         return arr
 
-
+#
+#Done
+#class tour
+#
 class Rook:
 
      def __init__(self, joueur, x, y):
